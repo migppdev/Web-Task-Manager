@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+  margin: 1em 10em;
+  background-color: aliceblue;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.task-box {
+  background-color: skyblue;
+  padding: 3em;
+  border-radius: 1em;
+}
+
+.created-tasks {
+  display: flex;
+  margin-top: 3em;
+}
+
+.task-manage {
+  display: flex;
+  margin-top: 3em;
+}
