@@ -1,3 +1,4 @@
+/* Normalize page */
 * {
   margin: 0;
   padding: 0;
@@ -15,18 +16,48 @@ header {
   align-items: center;
 }
 
+/* TASKS  */
 .task-box {
-  background-color: skyblue;
-  padding: 3em;
-  border-radius: 1em;
+  background-color: lightsteelblue;
+  padding: 2em;
+  border-radius: 0.5em;
+  flex: 1;
 }
 
-.created-tasks {
-  display: flex;
+.tasks-container {
   margin-top: 3em;
 }
 
-.task-manage {
+/* TASKS MANAGEMENT  */
+.task-mgmt-container {
   display: flex;
-  margin-top: 3em;
+  margin-top: 1em;
+  gap: 1em;
+  justify-content: center;
+}
+
+.current-tasks-container {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1em;
+}
+
+/* BUTTONS */
+
+.button {
+  padding: 2em;
+  border-radius: 0.5em;
+  flex: 0.3;
+}
+
+.new-task-button {
+  background-color: burlywood;
+}
+
+.edit-task-button {
+  background-color: bisque;
+}
+
+.task-done-button {
+  background-color: orange;
 }
