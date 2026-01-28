@@ -1,4 +1,4 @@
-/* Normalize page */
+/* Reset page */
 * {
   margin: 0;
   padding: 0;
@@ -60,4 +60,31 @@ header {
 
 .task-done-button {
   background-color: orange;
+}
+
+/* MODAL */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background: white;
+  margin: 10% auto;
+  padding: 20px;
+  width: 300px;
+  border-radius: 8px;
+}
+
+.close-modal {
+  cursor: pointer;
+  float: right;
+  font-size: 20px;
+}
+
+/* NEW TASK MODAL */
+
+.new-task-modal {
+  display: none;
 }
