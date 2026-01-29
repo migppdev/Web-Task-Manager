@@ -28,9 +28,23 @@
 
       <!-- New task modal -->
       <div id="new-task-modal" class="modal new-task-modal">
-        <div class="new-task-modal-content modal-content">
-          <span id="close-task-modal" class="close-modal">&times;</span>
-          <h2>New task</h2>
+        <div class="modal-container">
+          <div class="modal-header">
+            <span id="close-task-modal" class="close-modal">&times;</span>
+            <h2>New task</h2>
+          </div>
+          <br />
+          <hr />
+          <div class="modal-content">
+            <h4 class="modal-content-label">Name</h4>
+            <input id="task-name" class="modal-content-input" />
+            <h4 class="modal-content-label">Content</h4>
+            <textarea id="task-content" class="modal-content-input"></textarea>
+          </div>
+          <div class="modal-buttons">
+            <button>Cancel</button>
+            <button>Confirm</button>
+          </div>
         </div>
       </div>
     </main>
