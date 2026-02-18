@@ -20,12 +20,6 @@
         </div>
       </section>
 
-      <section class="task-mgmt-container">
-        <div class="button new-task-button">Create task</div>
-        <div class="button edit-task-button">Edit task</div>
-        <div class="button task-done-button">Mark as done</div>
-      </section>
-
       <!-- New task modal -->
       <div id="new-task-modal" class="modal new-task-modal">
         <div class="modal-container">
@@ -36,18 +30,24 @@
           <br />
           <hr />
           <div class="modal-content">
-            <h4 class="modal-content-label">Name</h4>
-            <input id="task-name" class="modal-content-input" />
             <h4 class="modal-content-label">Content</h4>
-            <textarea id="task-content" class="modal-content-input"></textarea>
+            <textarea
+              id="new-task-content"
+              class="modal-content-input"
+            ></textarea>
           </div>
           <div class="modal-buttons">
-            <button>Cancel</button>
-            <button>Confirm</button>
+            <button id="cancel-task">Cancel</button>
+            <button id="confirm-task">Confirm</button>
           </div>
         </div>
       </div>
     </main>
+    <footer class="task-mgmt-container">
+      <div class="floating-button new-task-button">Create task</div>
+      <div class="floating-button edit-task-button">Edit task</div>
+      <div class="floating-button task-done-button">Mark as done</div>
+    </footer>
     <script src="js/script.js"></script>
   </body>
 </html>
