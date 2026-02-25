@@ -13,11 +13,7 @@
       </header>
 
       <section class="tasks-container">
-        <div class="current-tasks-container">
-          <div class="task-box">Lorem, ipsum dolor.</div>
-          <div class="task-box">Lorem, ipsum dolor.</div>
-          <div class="task-box">Lorem, ipsum dolor.</div>
-        </div>
+        <div class="current-tasks-container"></div>
       </section>
 
       <!-- New task modal -->
@@ -35,11 +31,19 @@
               id="new-task-content"
               class="modal-content-input"
             ></textarea>
-            <h4 class="modal-content-label">Task color</h4>
+            <h4 class="modal-content-label">Task background color</h4>
             <input
               type="color"
               class="modal-content-input"
-              id="task-color-picker"
+              id="task-bg-color-picker"
+              value="#6495ED"
+            />
+            <h4 class="modal-content-label">Task text color</h4>
+            <input
+              type="color"
+              class="modal-content-input"
+              id="task-fg-color-picker"
+              value="#FFFFFF"
             />
           </div>
           <div class="modal-buttons">

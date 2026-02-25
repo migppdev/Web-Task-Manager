@@ -5,7 +5,8 @@ const closeTaskModal = document.querySelector("#close-task-modal");
 
 // Modal selectors
 const newTaskContent = document.querySelector("#new-task-content");
-const newTaskColor = document.querySelector("#task-color-picker");
+const newTaskBgColor = document.querySelector("#task-bg-color-picker"); // Background color
+const newTaskFgColor = document.querySelector("#task-fg-color-picker"); // Text color
 const cancelTaskModal = document.querySelector("#cancel-task");
 const confirmTaskModal = document.querySelector("#confirm-task");
 
@@ -28,7 +29,8 @@ confirmTaskModal.addEventListener("click", () => {
   const newTask = document.createElement("div");
   newTask.classList.add("task-box");
   newTask.textContent = newTaskContent.value;
-  newTask.style.backgroundColor = newTaskColor.value;
+  newTask.style.backgroundColor = newTaskBgColor.value;
+  newTask.style.color = newTaskFgColor.value;
 
   document.querySelector(".current-tasks-container").appendChild(newTask);
 });

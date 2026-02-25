@@ -7,7 +7,7 @@
 
 body {
   margin: 1rem 10rem;
-  background-color: azure;
+  background-color: #e2e8f0;
 }
 
 header {
@@ -17,15 +17,20 @@ header {
 }
 
 main {
-  padding-bottom: 100px;
+  padding-bottom: 6.25rem;
 }
 
 /* TASKS  */
 .task-box {
-  background-color: lightsteelblue;
-  padding: 2rem;
+  flex: 1 1 200px;
+  min-width: 200px;
+  max-width: 300px;
+  padding: 1rem;
   border-radius: 0.5rem;
-  flex: 1;
+  background-color: lightsteelblue;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
 
 .tasks-container {
@@ -52,6 +57,18 @@ main {
   margin-bottom: 0.5rem;
 }
 
+.new-task-button {
+  background-color: #7b68ee;
+}
+
+.edit-task-button {
+  background-color: royalblue;
+}
+
+.task-done-button {
+  background-color: dodgerblue;
+}
+
 .floating-button {
   padding: 1.5rem;
   border-radius: 0.5rem;
@@ -61,13 +78,14 @@ main {
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   z-index: 1000;
-  background-color: cornflowerblue;
+  color: #ffffff;
+  min-width: fit-content;
 }
 
 .floating-button:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-  background-color: aqua;
+  filter: brightness(0.85);
 }
 
 /* MODAL */
@@ -80,11 +98,11 @@ main {
 .modal-container {
   display: flex;
   flex-direction: column;
-  background-color: cornsilk;
+  background-color: azure;
   margin: 10% auto;
   padding: 20px;
   width: 300px;
-  border-radius: 8px;
+  border-radius: 0.5rem;
 }
 
 .modal-content {
@@ -117,4 +135,25 @@ main {
 
 .new-task-modal {
   display: none;
+}
+
+input[type="color"] {
+  width: 3rem;
+  height: 40px;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  padding: 0;
+  border: 0;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+  border-radius: 0.5rem;
+}
+
+input[type="color"]:hover {
+  transform: scale(1.04);
 }
