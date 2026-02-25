@@ -1,5 +1,3 @@
-// ========= CREATE TASK =========
-
 // Create task button selectors
 const createTaskButton = document.querySelector(".new-task-button");
 const createTaskModal = document.querySelector("#new-task-modal");
@@ -7,6 +5,7 @@ const closeTaskModal = document.querySelector("#close-task-modal");
 
 // Modal selectors
 const newTaskContent = document.querySelector("#new-task-content");
+const newTaskColor = document.querySelector("#task-color-picker");
 const cancelTaskModal = document.querySelector("#cancel-task");
 const confirmTaskModal = document.querySelector("#confirm-task");
 
@@ -29,13 +28,7 @@ confirmTaskModal.addEventListener("click", () => {
   const newTask = document.createElement("div");
   newTask.classList.add("task-box");
   newTask.textContent = newTaskContent.value;
+  newTask.style.backgroundColor = newTaskColor.value;
+
   document.querySelector(".current-tasks-container").appendChild(newTask);
 });
-
-// Edit task button selector
-const editTaskButton = document.querySelector(".edit-task-button");
-
-// Mark task as done button selector
-const taskDoneButton = document.querySelector(".task-done-button");
-
-// Insert new task

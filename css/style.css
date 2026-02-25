@@ -7,7 +7,7 @@
 
 body {
   margin: 1rem 10rem;
-  background-color: aliceblue;
+  background-color: azure;
 }
 
 header {
@@ -32,6 +32,12 @@ main {
   margin-top: 2rem;
 }
 
+.current-tasks-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
 /* TASKS MANAGEMENT  */
 .task-mgmt-container {
   display: flex;
@@ -46,14 +52,6 @@ main {
   margin-bottom: 0.5rem;
 }
 
-.current-tasks-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-/* BUTTONS */
-
 .floating-button {
   padding: 1.5rem;
   border-radius: 0.5rem;
@@ -63,24 +61,13 @@ main {
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   z-index: 1000;
+  background-color: cornflowerblue;
 }
 
 .floating-button:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-  background-color: #e0e0e0;
-}
-
-.new-task-button {
-  background-color: burlywood;
-}
-
-.edit-task-button {
-  background-color: bisque;
-}
-
-.task-done-button {
-  background-color: orange;
+  background-color: aqua;
 }
 
 /* MODAL */
