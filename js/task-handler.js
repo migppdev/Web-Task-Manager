@@ -1,22 +1,72 @@
-// Create task button selectors
+// --- SELECTORS ---
 const createTaskButton = document.querySelector(".new-task-button");
 const editTaskButton = document.querySelector(".edit-task-button");
+const tasksContainer = document.querySelector(".current-tasks-container");
 
 const taskModal = document.querySelector("#task-modal");
 const closeTaskModal = document.querySelector("#close-task-modal");
-
-// Modal selectors
-const taskModalContent = document.querySelector("#task-content");
-const taskModalBgColor = document.querySelector("#task-bg-color-picker"); // Background color
-const taskModalTextColor = document.querySelector("#task-fg-color-picker"); // Text color
 const cancelTaskModal = document.querySelector("#cancel-task");
 const confirmTaskModal = document.querySelector("#confirm-task");
 
-// Get tasks already created
-const tasksContainer = document.querySelector(".current-tasks-container");
+const taskModalContent = document.querySelector("#task-content");
+const taskModalBgColor = document.querySelector("#task-bg-color-picker");
+const taskModalFgColor = document.querySelector("#task-fg-color-picker");
 
-// Selected task
+// --- STATE VARIABLES & DEFAULT VALUES ---
+const defaultTaskBgColor = "#6495ED";
+const defaultTaskFgColor = "#FFFFFF";
+
 let selectedTask = null;
+let isModalForNewTask = true;
+
+// --- UTILITY FUNCTIONS ---
+
+// Convert RGB to HEX, to use selected task color values
+function rgbToHex(rgb) {
+  // If it's already hex, return it
+  if (rgb.startsWith("#")) return rgb;
+
+  const result = /^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/.exec(rgb);
+  if (!result) return "#000000"; // fallback
+  return (
+    "#" +
+    ("0" + parseInt(result[1], 10).toString(16)).slice(-2) +
+    ("0" + parseInt(result[2], 10).toString(16)).slice(-2) +
+    ("0" + parseInt(result[3], 10).toString(16)).slice(-2)
+  );
+}
+
+// --- MODAL & TASK ACTIONS ---
+
+function openModal() {
+  taskModal.style.display = "block";
+}
+
+function closeModal() {
+  taskModal.style.display = "none";
+  taskModalContent.value = "";
+  taskModalBgColor.value = defaultTaskBgColor;
+  taskModalFgColor.value = defaultTaskFgColor;
+}
+
+function saveTask(task) {
+  if (task) {
+    // Edit task
+    task.textContent = taskModalContent.value;
+    task.style.backgroundColor = taskModalBgColor.value;
+    task.style.color = taskModalFgColor.value;
+  } else {
+    // Create task
+    const newTask = document.createElement("div");
+    newTask.classList.add("task-box");
+    newTask.textContent = taskModalContent.value;
+    newTask.style.backgroundColor = taskModalBgColor.value;
+    newTask.style.color = taskModalFgColor.value;
+    tasksContainer.appendChild(newTask);
+  }
+}
+
+// --- EVENT LISTENERS ---
 
 // Get task clicked
 tasksContainer.addEventListener("click", (e) => {
@@ -24,22 +74,23 @@ tasksContainer.addEventListener("click", (e) => {
 
   if (taskBox) {
     taskBox.classList.toggle("task-box-selected");
-    selectedTask = taskBox;
+    // update selected task
+    selectedTask = document.querySelector(".task-box-selected");
   }
 });
 
-// Variable to check if modal is for a new task or to edit
-let isModalForNewTask = true;
-
-// Button & Modal listeners
+// Create task button listener
 createTaskButton.addEventListener("click", () => {
   taskModal.style.display = "block"; // Make modal visible
   isModalForNewTask = true;
 });
 
+// Edit task button listener
 editTaskButton.addEventListener("click", () => {
+  // Get all tasks selected
   const selectedTasks = document.querySelectorAll(".task-box-selected");
 
+  // Validate only one task is selected
   if (selectedTasks.length > 1) {
     alert("Multiple tasks are selected");
     return;
@@ -48,15 +99,15 @@ editTaskButton.addEventListener("click", () => {
     return;
   }
 
-  selectedTask = selectedTasks[0];
   isModalForNewTask = false;
 
+  // Copy task content to modal
   taskModalContent.value = selectedTask.textContent;
 
   const bg = selectedTask.style.backgroundColor;
   const fg = selectedTask.style.color;
 
-  // Si no hay style inline, usar el valor por defecto del input (ya en hex)
+  // if a background color is selected, convert it to hex and apply it, otherwise apply default value
   if (bg) {
     taskModalBgColor.value = rgbToHex(bg);
   } else {
@@ -64,22 +115,21 @@ editTaskButton.addEventListener("click", () => {
   }
 
   if (fg) {
-    taskModalTextColor.value = rgbToHex(fg);
+    taskModalFgColor.value = rgbToHex(fg);
   } else {
-    taskModalTextColor.value = taskModalTextColor.defaultValue;
+    taskModalFgColor.value = taskModalFgColor.defaultValue;
   }
 
   openModal();
 });
 
+// Modal control listeners
 closeTaskModal.addEventListener("click", () => {
-  taskModal.style.display = "none"; // Make modal not visible
+  closeModal();
 });
 
 cancelTaskModal.addEventListener("click", () => {
-  // Clear fields and make modal not visible
-  taskModalContent.value = "";
-  taskModal.style.display = "none";
+  closeModal();
 });
 
 confirmTaskModal.addEventListener("click", () => {
@@ -92,46 +142,5 @@ confirmTaskModal.addEventListener("click", () => {
   }
 
   closeModal();
-  selectedTask = null;
+  selectedTask = null; // Clear selection
 });
-
-function saveTask(task) {
-  if (task) {
-    // Edit task
-    task.textContent = taskModalContent.value;
-    task.style.backgroundColor = taskModalBgColor.value;
-    task.style.color = taskModalTextColor.value;
-  } else {
-    // Create task
-    const newTask = document.createElement("div");
-    newTask.classList.add("task-box");
-    newTask.textContent = taskModalContent.value;
-    newTask.style.backgroundColor = taskModalBgColor.value;
-    newTask.style.color = taskModalTextColor.value;
-    tasksContainer.appendChild(newTask);
-  }
-}
-
-function openModal() {
-  taskModal.style.display = "block";
-}
-
-function closeModal() {
-  taskModal.style.display = "none";
-  taskModalContent.value = "";
-}
-
-// Convert RGB to HEX, to use selected task color values
-function rgbToHex(rgb) {
-  // If it's already rgb, return it
-  if (rgb.startsWith("#")) return rgb;
-
-  const result = /^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/.exec(rgb);
-  if (!result) return "#000000"; // fallback negro
-  return (
-    "#" +
-    ("0" + parseInt(result[1], 10).toString(16)).slice(-2) +
-    ("0" + parseInt(result[2], 10).toString(16)).slice(-2) +
-    ("0" + parseInt(result[3], 10).toString(16)).slice(-2)
-  );
-}
