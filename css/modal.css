@@ -42,11 +42,13 @@
 
 /* NEW TASK MODAL */
 
-.new-task-modal {
+.task-modal {
   display: none;
 }
 
-.new-task-modal input[type="color"] {
+/* Color input */
+
+input[type="color"] {
   width: 3rem;
   height: 40px;
   border-radius: 0.5rem;
@@ -55,14 +57,14 @@
   border: 0;
 }
 
-.new-task-modal input[type="color"]::-webkit-color-swatch-wrapper {
+input[type="color"]::-webkit-color-swatch-wrapper {
   padding: 0;
 }
 
-.new-task-modal input[type="color"]::-webkit-color-swatch {
+input[type="color"]::-webkit-color-swatch {
   border-radius: 0.5rem;
 }
 
-.new-task-modal input[type="color"]:hover {
+input[type="color"]:hover {
   transform: scale(1.04);
 }
