@@ -31,6 +31,18 @@ main {
   word-wrap: break-word;
   overflow-wrap: break-word;
   white-space: normal;
+  transition:
+    transform 0.1s ease-in-out,
+    border 0.1s ease-in-out;
+}
+
+.task-box:hover {
+  filter: brightness(0.95);
+}
+
+.task-box-selected {
+  border: 1px solid black;
+  transform: translateY(-3px);
 }
 
 .tasks-container {
@@ -86,74 +98,4 @@ main {
   transform: translateY(-3px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
   filter: brightness(0.85);
-}
-
-/* MODAL */
-.modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-}
-
-.modal-container {
-  display: flex;
-  flex-direction: column;
-  background-color: azure;
-  margin: 10% auto;
-  padding: 20px;
-  width: 300px;
-  border-radius: 0.5rem;
-}
-
-.modal-content {
-  margin-top: 1rem;
-}
-
-.modal-content-input {
-  margin-bottom: 1rem;
-  margin-top: 1rem;
-  padding: 0.2rem;
-}
-
-.modal-content textarea {
-  resize: vertical;
-}
-
-.close-modal {
-  cursor: pointer;
-  float: right;
-  font-size: 20px;
-}
-
-.modal-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-}
-
-/* NEW TASK MODAL */
-
-.new-task-modal {
-  display: none;
-}
-
-input[type="color"] {
-  width: 3rem;
-  height: 40px;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  padding: 0;
-  border: 0;
-}
-
-input[type="color"]::-webkit-color-swatch-wrapper {
-  padding: 0;
-}
-
-input[type="color"]::-webkit-color-swatch {
-  border-radius: 0.5rem;
-}
-
-input[type="color"]:hover {
-  transform: scale(1.04);
 }

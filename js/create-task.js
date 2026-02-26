@@ -32,5 +32,8 @@ confirmTaskModal.addEventListener("click", () => {
   newTask.style.backgroundColor = newTaskBgColor.value;
   newTask.style.color = newTaskFgColor.value;
 
+  newTaskContent.textContent = "";
+  
+
   document.querySelector(".current-tasks-container").appendChild(newTask);
 });

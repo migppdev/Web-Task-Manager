@@ -1,0 +1,68 @@
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-container {
+  display: flex;
+  flex-direction: column;
+  background-color: azure;
+  margin: 10% auto;
+  padding: 20px;
+  width: 300px;
+  border-radius: 0.5rem;
+}
+
+.modal-content {
+  margin-top: 1rem;
+}
+
+.modal-content-input {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  padding: 0.2rem;
+}
+
+.modal-content textarea {
+  resize: vertical;
+}
+
+.close-modal {
+  cursor: pointer;
+  float: right;
+  font-size: 20px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* NEW TASK MODAL */
+
+.new-task-modal {
+  display: none;
+}
+
+.new-task-modal input[type="color"] {
+  width: 3rem;
+  height: 40px;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  padding: 0;
+  border: 0;
+}
+
+.new-task-modal input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.new-task-modal input[type="color"]::-webkit-color-swatch {
+  border-radius: 0.5rem;
+}
+
+.new-task-modal input[type="color"]:hover {
+  transform: scale(1.04);
+}
