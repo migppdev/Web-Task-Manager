@@ -157,7 +157,27 @@ taskDoneButton.addEventListener("click", () => {
 });
 
 deleteTaskButton.addEventListener("click", () => {
-  deleteTask(selectedTask);
+  const selectedTasks = document.querySelectorAll(".task-box-selected");
+
+  if (selectedTasks.length < 1) {
+    alert("No tasks selected");
+    return;
+  }
+
+  // Confirmation on delete
+  if (selectedTasks.length > 1) {
+    confirmMessage =
+      "Are you sure you want to delete " + selectedTasks.length + " tasks?";
+  } else {
+    confirmMessage = "Are you sure you want to delete this task?";
+  }
+
+  if (confirm(confirmMessage)) {
+    selectedTasks.forEach((task) => {
+      deleteTask(task);
+    });
+    saveTasksToLocalStorage();
+  }
 });
 
 // Modal control listeners
