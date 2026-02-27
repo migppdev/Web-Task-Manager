@@ -16,6 +16,7 @@
 
 .modal-content {
   margin-top: 1rem;
+  border-radius: 0.5rem;
 }
 
 .modal-content-input {
@@ -36,11 +37,29 @@
 
 .modal-buttons {
   display: flex;
-  justify-content: center;
-  gap: 1rem;
+  justify-content: right;
+  gap: 0.7rem;
 }
 
-/* NEW TASK MODAL */
+.modal-button {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 0;
+  transition: filter ease-in-out 0.1s;
+  cursor: pointer;
+}
+
+.modal-button:hover {
+  filter: brightness(0.95);
+}
+
+.modal-buttons #cancel-task {
+  background-color: lightgray;
+}
+
+.modal-buttons #confirm-task {
+  background-color: greenyellow;
+}
 
 .task-modal {
   display: none;

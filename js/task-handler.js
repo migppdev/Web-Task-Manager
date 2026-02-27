@@ -2,6 +2,7 @@
 const createTaskButton = document.querySelector(".new-task-button");
 const editTaskButton = document.querySelector(".edit-task-button");
 const taskDoneButton = document.querySelector(".task-done-button");
+const deleteTaskButton = document.querySelector(".del-task-button");
 const tasksContainer = document.querySelector(".current-tasks-container");
 
 const taskModal = document.querySelector("#task-modal");
@@ -81,6 +82,14 @@ function clearSelection() {
     selectedTask = null;
   });
 }
+
+function deleteTask(task) {
+  if (task) {
+    task.remove();
+    saveTasksToLocalStorage();
+  }
+}
+
 // --- EVENT LISTENERS ---
 
 // Get task clicked
@@ -145,6 +154,10 @@ taskDoneButton.addEventListener("click", () => {
     clearSelection();
   });
   saveTasksToLocalStorage(); // Save to storage
+});
+
+deleteTaskButton.addEventListener("click", () => {
+  deleteTask(selectedTask);
 });
 
 // Modal control listeners

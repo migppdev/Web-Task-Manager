@@ -82,6 +82,10 @@ main {
   background-color: dodgerblue;
 }
 
+.del-task-button {
+  background-color: #d67676;
+}
+
 .task-done {
   text-decoration: line-through;
   filter: contrast(0.5);
@@ -103,5 +107,5 @@ main {
 .floating-button:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-  filter: brightness(0.85);
+  filter: brightness(0.9);
 }
