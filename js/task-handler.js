@@ -1,6 +1,7 @@
 // --- SELECTORS ---
 const createTaskButton = document.querySelector(".new-task-button");
 const editTaskButton = document.querySelector(".edit-task-button");
+const taskDoneButton = document.querySelector(".task-done-button");
 const tasksContainer = document.querySelector(".current-tasks-container");
 
 const taskModal = document.querySelector("#task-modal");
@@ -47,6 +48,7 @@ function closeModal() {
   taskModalContent.value = "";
   taskModalBgColor.value = defaultTaskBgColor;
   taskModalFgColor.value = defaultTaskFgColor;
+  clearSelection();
 }
 
 function saveTask(task) {
@@ -66,6 +68,19 @@ function saveTask(task) {
   }
 }
 
+function markAsDone(task) {
+  if (task) {
+    task.classList.toggle("task-done");
+  }
+}
+
+function clearSelection() {
+  const selectedTasks = document.querySelectorAll(".task-box-selected");
+  selectedTasks.forEach((task) => {
+    task.classList.remove("task-box-selected");
+    selectedTask = null;
+  });
+}
 // --- EVENT LISTENERS ---
 
 // Get task clicked
@@ -123,6 +138,15 @@ editTaskButton.addEventListener("click", () => {
   openModal();
 });
 
+taskDoneButton.addEventListener("click", () => {
+  const selectedTasks = document.querySelectorAll(".task-box-selected");
+  selectedTasks.forEach((task) => {
+    markAsDone(task);
+    clearSelection();
+  });
+  saveTasksToLocalStorage(); // Save to storage
+});
+
 // Modal control listeners
 closeTaskModal.addEventListener("click", () => {
   closeModal();
@@ -143,4 +167,50 @@ confirmTaskModal.addEventListener("click", () => {
 
   closeModal();
   selectedTask = null; // Clear selection
+  saveTasksToLocalStorage(); // Save to storage
 });
+
+// --- LOCAL STORAGE ---
+function saveTasksToLocalStorage() {
+  const tasks = [];
+  const taskElements = document.querySelectorAll(".task-box");
+
+  taskElements.forEach((task) => {
+    tasks.push({
+      content: task.textContent,
+      bgColor: task.style.backgroundColor,
+      fgColor: task.style.color,
+      done: task.classList.contains("task-done"),
+    });
+  });
+
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+function loadTasksFromLocalStorage() {
+  // Save tasks to variable
+  const storedTasks = localStorage.getItem("tasks");
+
+  // If no tasks, stop execution
+  if (!storedTasks) return;
+
+  const tasks = JSON.parse(storedTasks);
+
+  // Iterate over stored tasks and restore each one
+  tasks.forEach((taskData) => {
+    const newTask = document.createElement("div");
+    newTask.classList.add("task-box");
+    newTask.textContent = taskData.content;
+    newTask.style.backgroundColor = taskData.bgColor;
+    newTask.style.color = taskData.fgColor;
+
+    // Check if the task was done
+    if (taskData.done) {
+      newTask.classList.add("task-done");
+    }
+
+    tasksContainer.appendChild(newTask);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", loadTasksFromLocalStorage);

@@ -38,6 +38,7 @@ main {
 
 .task-box:hover {
   filter: brightness(0.95);
+  cursor: pointer;
 }
 
 .task-box-selected {
@@ -79,6 +80,11 @@ main {
 
 .task-done-button {
   background-color: dodgerblue;
+}
+
+.task-done {
+  text-decoration: line-through;
+  filter: contrast(0.5);
 }
 
 .floating-button {
