@@ -6,7 +6,6 @@
 }
 
 body {
-  margin: 1rem 10rem;
   background-color: #e2e8f0;
 }
 
@@ -14,6 +13,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 1.5rem;
 }
 
 main {
@@ -47,7 +47,7 @@ main {
 }
 
 .tasks-container {
-  margin-top: 2rem;
+  margin: 3rem;
 }
 
 .current-tasks-container {
@@ -56,7 +56,7 @@ main {
   gap: 1rem;
 }
 
-/* TASKS MANAGEMENT  */
+/* TASKS MANAGEMENT (buttons)  */
 .task-mgmt-container {
   display: flex;
   justify-content: center;
@@ -108,4 +108,30 @@ main {
   transform: translateY(-3px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
   filter: brightness(0.9);
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+  .current-tasks-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .task-mgmt-container {
+    flex-wrap: wrap;
+    width: 90%;
+    gap: 0.5rem;
+  }
+  
+  /* Make buttons 2x2 */
+  .floating-button {
+    flex: 1 0 calc(50% - 0.5rem);
+    padding: 1rem 0.5rem;
+    text-align: center;
+    box-sizing: border-box;
+    font-size: 0.9rem;
+  }
+  .task-box {
+    flex: 0 0 auto;
+  }
 }
